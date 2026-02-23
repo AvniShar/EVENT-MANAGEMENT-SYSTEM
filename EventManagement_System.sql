@@ -1,0 +1,79 @@
+DROP DATABASE IF EXISTS EventManagement;
+CREATE DATABASE EventManagement;
+USE EventManagement;
+
+CREATE TABLE USERS (
+    User_ID INT PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Email VARCHAR(100) UNIQUE NOT NULL,
+    Phone VARCHAR(15),
+    Password VARCHAR(100) NOT NULL,
+    Address VARCHAR(255)
+) ENGINE=InnoDB;
+
+CREATE TABLE ORGANIZER (
+    Organizer_ID INT PRIMARY KEY,
+    Name VARCHAR(100) NOT NULL,
+    Email VARCHAR(100) UNIQUE,
+    Phone VARCHAR(15)
+) ENGINE=InnoDB;
+
+CREATE TABLE VENUE (
+    Venue_ID INT PRIMARY KEY,
+    Venue_Name VARCHAR(100) NOT NULL,
+    Location VARCHAR(150),
+    Capacity INT
+) ENGINE=InnoDB;
+
+CREATE TABLE EVENT (
+    Event_ID INT PRIMARY KEY,
+    Event_Name VARCHAR(100) NOT NULL,
+    Date DATE,
+    Time TIME,
+    Category VARCHAR(50),
+    Price DECIMAL(10,2),
+    Organizer_ID INT,
+    Venue_ID INT,
+    FOREIGN KEY (Organizer_ID) REFERENCES ORGANIZER(Organizer_ID)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (Venue_ID) REFERENCES VENUE(Venue_ID)
+        ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE BOOKING (
+    Booking_ID INT PRIMARY KEY,
+    Booking_Date DATE,
+    No_of_Tickets INT,
+    Total_Amount DECIMAL(10,2),
+    User_ID INT,
+    Event_ID INT,
+    FOREIGN KEY (User_ID) REFERENCES USERS(User_ID)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (Event_ID) REFERENCES EVENT(Event_ID)
+        ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE PAYMENT (
+    Payment_ID INT PRIMARY KEY,
+    Payment_Date DATE,
+    Amount DECIMAL(10,2),
+    Payment_Mode VARCHAR(50),
+    Booking_ID INT UNIQUE,
+    FOREIGN KEY (Booking_ID) REFERENCES BOOKING(Booking_ID)
+        ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+
+CREATE TABLE TICKET (
+    Ticket_ID INT PRIMARY KEY,
+    Seat_Number VARCHAR(10),
+    Ticket_Type VARCHAR(50),
+    Price DECIMAL(10,2),
+    Issue_Date DATE,
+    Ticket_Status VARCHAR(50),
+    Booking_ID INT,
+    Event_ID INT,
+    FOREIGN KEY (Booking_ID) REFERENCES BOOKING(Booking_ID)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (Event_ID) REFERENCES EVENT(Event_ID)
+        ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
