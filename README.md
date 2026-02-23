@@ -5,8 +5,11 @@ Database Design for Event Management System
 # **TEAM MEMBERS**
 
 Garv Rajpoot - 2410030437
+
 Avni Sharma  - 2410030421
+
 Shourya Singh - 2410030219
+
 Siddhi Asthana - 2410030387
 
 # **DESCRIPTION** 
