@@ -96,7 +96,7 @@ The Event Management System is a web based application designed to manage events
 # **RELATIONSHIP AND CARDNINALITY**
 
 - USER – BOOKING: (1:M)  One user can make multiple bookings.
-- ORGANIZER – EVENT: (M:M) One organizer can manage multiple events.
+- ORGANIZER – EVENT: (1:M) One organizer can manage multiple events.
 - EVENT – VENUE: (M:1) One venue can host multiple events.
 - EVENT – BOOKING: (1:M) One event can have multiple bookings.
 - BOOKING – PAYMENT: (1:M) Each booking has exactly one payment.
