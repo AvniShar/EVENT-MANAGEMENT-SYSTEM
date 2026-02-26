@@ -83,7 +83,7 @@ The Event Management System is a web based application designed to manage events
 - Payment_Date
 - Amount
 - Payment_Mode
-- Booking ID( FK UNIQUE)
+- Booking ID( Foreign Key)
 
 # 7. Ticket
 
