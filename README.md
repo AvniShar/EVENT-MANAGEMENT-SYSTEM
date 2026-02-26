@@ -139,27 +139,39 @@ In this project, there are no weak entities because all entities have their own 
 # **Participation**
 
 - USER — BOOKING
+
   User-> Partial
+  
   Booking-> Total
   
 - EVENT — BOOKING
+  
   Event->Partial
+  
   Booking->Total
 
 - ORGANIZER — EVENT
+  
   Organizer->Partial
+  
   Event->Total
 
 - VENUE — EVENT
+  
   Venue->Partial
+  
   Event->Total
 
 - BOOKING — PAYMENT
+  
   Booking->Total
+  
   Payment->Total
 
 - EVENT — TICKET
+  
   Event->Partial
+  
   Ticket->Total
 
   
