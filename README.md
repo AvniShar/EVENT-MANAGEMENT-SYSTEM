@@ -12,9 +12,9 @@ Shourya Singh - 2410030219
 
 Siddhi Asthana - 2410030387
 
-# **DESCRIPTION** 
+# **Problem Statement** 
 
-Database design for an Event Management System using MySQL and ER modeling
+Database design for an Event Management System using MySQL and ER modeling.Manual event booking systems are inefficient, error-prone, and difficult to manage. There is a need for a centralized database system to efficiently handle event scheduling, ticket booking and payment management.
 
 # **ABSTRACT**
 
@@ -87,7 +87,7 @@ The Event Management System is a web based application designed to manage events
 
 # 7. Ticket
 
-- Ticket_ID(Primary key
+- Ticket_ID(Primary key)
 -  Seat_Number
 -  Ticket_Type
 -  Price
@@ -95,13 +95,12 @@ The Event Management System is a web based application designed to manage events
 
 # **RELATIONSHIP AND CARDNINALITY**
 
-- USER – BOOKING: One user can make multiple bookings.
-- ORGANIZER – EVENT: One organizer can manage multiple events.
-- VENUE – EVENT: One venue can host multiple events.
-- EVENT – BOOKING: One event can have multiple bookings.
-- BOOKING – PAYMENT: Each booking has exactly one payment.
-- BOOKING – TICKET: One booking can generate multiple tickets.
-- EVENT – TICKET: One event can have multiple tickets issued.
+- USER – BOOKING: (1:M)  One user can make multiple bookings.
+- ORGANIZER – EVENT: (M:M) One organizer can manage multiple events.
+- EVENT – VENUE: (M:1) One venue can host multiple events.
+- EVENT – BOOKING: (1:M) One event can have multiple bookings.
+- BOOKING – PAYMENT: (1:M) Each booking has exactly one payment.
+- EVENT – TICKET: (1:M) One event can have multiple tickets issued.
 
 # **Tables Created in Database**
 
@@ -113,10 +112,57 @@ The Event Management System is a web based application designed to manage events
 - PAYMENT: Stores payment information corresponding to each booking.
 - TICKET: Stores ticket details generated for bookings.
 
+# **Strong Entity** 
 
+A strong entity is an entity that has its own primary key and can be uniquely identified independently of other entities.
+In this Event Booking System, the following are strong entities:
+- USER
 
+- EVENT
 
+- VENUE
 
+- ORGANIZER
 
+- BOOKING
+
+- PAYMENT
+
+- TICKET
+
+# **Weak Entity**
+
+A weak entity is an entity that does not have a primary key of its own and depends on a strong entity for identification
+
+In this project, there are no weak entities because all entities have their own primary keys and can be uniquely identifed.
+
+# **Participation**
+
+- USER — BOOKING
+  User-> Partial
+  Booking-> Total
+  
+- EVENT — BOOKING
+  Event->Partial
+  Booking->Total
+
+- ORGANIZER — EVENT
+  Organizer->Partial
+  Event->Total
+
+- VENUE — EVENT
+  Venue->Partial
+  Event->Total
+
+- BOOKING — PAYMENT
+  Booking->Total
+  Payment->Total
+
+- EVENT — TICKET
+  Event->Partial
+  Ticket->Total
+
+  
+  
 
 
