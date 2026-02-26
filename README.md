@@ -162,7 +162,7 @@ In this project, there are no weak entities because all entities have their own 
   
   Event->Total
 
-- BOOKING — PAYMENT
+- BOOKING — PAYMENT(Payment is compulsory)
   
   Booking->Total
   
