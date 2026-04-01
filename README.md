@@ -255,11 +255,15 @@ In this project, there are no weak entities because all entities have their own 
     Event_Schedule-> Total
 
 - Category - Event
-   Category -> Partia
+  
+  Category -> Partia
+  
   Event -> Total
 
 - Coupon - Bookings
+- 
   Coupon->Partia
+  
   Bookings->Total
     
 
