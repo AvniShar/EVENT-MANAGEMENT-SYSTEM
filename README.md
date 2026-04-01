@@ -23,7 +23,7 @@ The Event Management System is a web based application designed to manage events
 # **CONTENT**
 
 - ER Diagram(PDF)
-- Relational Schema (MYSQL file for Xampp (PHPMyAdmin))
+- Relational Schema (MYSQL file for Xampp (PHPMyAdmin , VScode))
 
 
 # **TOOLS USED**
@@ -31,6 +31,7 @@ The Event Management System is a web based application designed to manage events
 - draw.io
 - MYySQL
 - XAMPP
+- VScode
 
 # **ENTITIES AND ATTRIBUTES USED**
 
@@ -93,6 +94,38 @@ The Event Management System is a web based application designed to manage events
 -  Price
 -  Issue_Date
 
+# 8. Category
+
+- Category_ID(Primary key)
+- Category_Name
+
+# 9. Coupon
+
+- Coupon_ID(Primary key)
+- Code
+- Discount_Amount
+
+# 10. Attendee
+
+- Attendee_ID(Primary key)
+- Name
+- Phone
+- Email
+- Booking_ID(Foreign key)
+
+# 11. Event_Schedule
+
+- Schedule_ID(Primary kry)
+- Date
+- Time
+- Event_ID(Foreign key)
+
+# 12. Seat
+- Seat_ID(Primary key)
+- Seat_type
+- Seat_number
+- Event_ID(Foreign key)
+
 # **RELATIONSHIP AND CARDNINALITY**
 
 - USER – BOOKING: (1:M)  One user can make multiple bookings.
@@ -101,6 +134,13 @@ The Event Management System is a web based application designed to manage events
 - EVENT – BOOKING: (1:M) One event can have multiple bookings.
 - BOOKING – PAYMENT: (1:1) Each booking has exactly one payment.
 - EVENT – TICKET: (1:M) One event can have multiple tickets issued.
+- EVENT - SEAT: (1:M) One event can have multiple seats available.
+- SEAT - TICKET: (1:1) Each seat is assigned to exactly one ticket, and each ticket corresponds to one seat.
+- BOOKING - ATTENDEE: (1:M) One booking can include multiple attendees.
+- EVENT - EVENT_SCHEDULE: (1:M) One event can have multiple schedules (different dates and times).
+- CATEGORY - EVENT: (1:M) One category can include multiple even
+- COUPING - BOOKING: (1:M) One category can include multiple even
+
 
 # **Tables Created in Database**
 
@@ -111,6 +151,13 @@ The Event Management System is a web based application designed to manage events
 - BOOKING: Stores booking details made by users for events.
 - PAYMENT: Stores payment information corresponding to each booking.
 - TICKET: Stores ticket details generated for bookings.
+- CATEGORY: Stores different event categories such as music, tech, sports, etc.
+- COUPON: Stores discount coupon details including code, discount amount, and expiry date.
+- ATTENDEE: Stores details of individuals attending an event under a booking.
+- SEAT: Stores seat information for events including seat number and seat type.
+- BOOKING_TICKET: A relationship table that links bookings and tickets, representing a many-to-many relationship.
+- EVENT_ORGANIZER: A relationship table that connects events and organizers, allowing multiple organizers for an event.
+- USER_EVENT: A relationship table that represents user interest in events (wishlist or interaction), supporting a many-to-many relationship.
 
 # **Strong Entity** 
 
@@ -129,6 +176,16 @@ In this Event Booking System, the following are strong entities:
 - PAYMENT
 
 - TICKET
+
+- CATEGORY
+
+- COUPON
+
+- SEAT
+
+- ATTENDEE
+
+- EVENT_SCHEDULE
 
 # **Weak Entity**
 
@@ -173,6 +230,40 @@ In this project, there are no weak entities because all entities have their own 
   Event->Partial
   
   Ticket->Total
+
+  - EVENT - SEAT
+
+    Event->Partial
+    Seat->Total
+
+  - SEAT - TICKET
+
+    Seat-> Partial
+    
+    Ticket-> Total
+
+  - Booking - Attendee
+ 
+    Booking-> Partial
+    
+    Attendee-> Total
+
+  - Event - Event_Schedule
+   
+    Event-> Partisl
+    
+    Event_Schedule-> Total
+
+- Category - Event
+   Category -> Partia
+  Event -> Total
+
+- Coupon - Bookings
+  Coupon->Partia
+  Bookings->Total
+    
+
+    
 
   
   
